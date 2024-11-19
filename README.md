@@ -7,4 +7,5 @@ Live SD Card Emulation is not officially supported as of the creation of these s
 ## Usage
 
 1 - Set up your environment by running the "setup.sh"
+
 2 - Boot your Raspberry Pi's SD card by running "RPI-Live-SD-Emulator.sh"
