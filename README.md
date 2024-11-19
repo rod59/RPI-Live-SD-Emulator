@@ -1,4 +1,4 @@
-# QEMU Live SD Card Emulator for Apple Silicone
+# QEMU Live Raspberry Pi SD Card Emulator for Apple Silicone
 
 ## About
 
