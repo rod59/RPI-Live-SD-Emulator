@@ -68,14 +68,15 @@ echo "WARNING: This script unmounts the Raspberry Pi's SD card to be able to emu
 sudo diskutil unmountDisk ${VOLUME}
 
 #sudo is required for qemu-system-******* command
-
+#BULLSEYE WORKING
   sudo qemu-system-aarch64 \
-  -machine raspi3b \
-  -nographic \
-  -dtb ${SCRIPT_DIR}/qemu-rpi-kernel-master/native-emulation/dtbs/bcm2710-rpi-3-b-plus.dtb \
-  -kernel ${SCRIPT_DIR}/qemu-rpi-kernel-master/native-emulation/5.4.51\ kernels/kernel8.img \
-  -drive file=${VOLUME},format=raw  \
-  -append "rw earlyprintk loglevel=8 console=ttyAMA0,115200 dwc_otg.lpm_enable=0 root=/dev/mmcblk0p2 rootdelay=1 panic=1" \
+  -M versatilepb \
+  -cpu arm1176 \
+  -m 256 \
+  -drive file=${VOLUME},format=raw \
+  -dtb ${SCRIPT_DIR}/qemu-rpi-kernel/versatile-pb-bullseye-5.10.63.dtb \
+  -kernel ${SCRIPT_DIR}/qemu-rpi-kernel/kernel-qemu-5.10.63-bullseye \
+  -append 'root=/dev/sda2' \
   -netdev vmnet-bridged,id=vmnet,ifname=en0 \
   -device virtio-net-pci,netdev=vmnet \
-  -no-reboot
+  -nographic \
